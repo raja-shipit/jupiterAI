@@ -1,18 +1,20 @@
 {
-  "last_updated": "2026-05-01T17:15:32Z",
-  "last_updated_date": "2026-05-01",
-  "source": "EIA Form 860M Excel (march_generator2026.xlsx)",
-  "site_count": 1650,
-  "total_mw": 122819.8,
+  "last_updated": "2026-08-07T02:48:04Z",
+  "last_updated_date": "2026-08-07",
+  "source": "EIA Form 860M Excel (june_generator2026.xlsx)",
+  "site_count": 1735,
+  "total_mw": 130525.9,
   "by_status": {
-    "Planned": 217,
-    "Cancelled": 131,
-    "Under Construction": 259,
-    "Operating": 997,
+    "Planned": 204,
+    "Cancelled": 147,
+    "Under Construction": 256,
+    "Operating": 1082,
     "Retired": 46
   },
-  "data_as_of": "2026-03-27",
+  "data_as_of": "2026-07-03",
   "lag_days": 35,
   "lag_note": "EIA-860M is lagged ~1 month. This is normal.",
-  "using_annual": false
+  "using_annual": false,
+  "excel_file": "june_generator2026.xlsx",
+  "gdrive_folder": "1lRB9suVLfucJQP1EExnEv0I9Hg12xSpA"
 }
