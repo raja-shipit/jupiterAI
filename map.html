@@ -176,7 +176,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 const CC={'Lithium-ion (LFP/NMC)':'#185FA5','Lithium-ion (NMC)':'#1D9E75','Flow Battery':'#BA7517','Lead Acid':'#888780','Nickel Iron':'#639922','Sodium':'#534AB7','Other':'#D85A30','Capacitor':'#cccccc'};
 const SC={'Operating':'#1D9E75','Under Construction':'#BA7517','Planned':'#185FA5','Retired':'#A32D2D','Cancelled':'#888780','Standby':'#639922','Out of service':'#888780'};
 const INUM=new Set(['mw','mwh','year']);
-const GITHUB_REPO='raja-shipit/dartboard';
+const GITHUB_REPO='raja-shipit/jupiterAI';
 
 // Data
 const RAW=(typeof EIA_BESS_PLANTS!=='undefined')?EIA_BESS_PLANTS:[];
@@ -343,12 +343,12 @@ function xCSV(){
   const cols=['name','owner','state','county','city','iso','ba','mw','mwh','chem','app','status','year','lat','lon','gen'];
   const esc=v=>{const s=String(v??'');return(s.includes(',')||s.includes('"'))?'"'+s.replace(/"/g,'""')+'"':s;};
   const rows=srt(_td).map(p=>cols.map(c=>esc(p[c])).join(','));
-  dl([cols.join(','),...rows].join('\r\n'),`dartboard_bess_${new Date().toISOString().slice(0,10)}.csv`,'text/csv;charset=utf-8;');
+  dl([cols.join(','),...rows].join('\r\n'),`jupiterAI_bess_${new Date().toISOString().slice(0,10)}.csv`,'text/csv;charset=utf-8;');
 }
 function xJSON(){
   const data=srt(_td);
   dl(JSON.stringify({exported:new Date().toISOString(),source:'EIA-860M',count:data.length,total_mw:data.reduce((s,p)=>s+(p.mw||0),0),sites:data},null,2),
-    `dartboard_bess_${new Date().toISOString().slice(0,10)}.json`,'application/json');
+    `jupiterAI_bess_${new Date().toISOString().slice(0,10)}.json`,'application/json');
 }
 
 // Freshness
