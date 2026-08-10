@@ -20,7 +20,7 @@
         text-decoration:none;display:inline-flex;align-items:center;gap:6px;
         margin-right:20px;flex-shrink:0;">
         <span style="width:8px;height:8px;border-radius:50%;background:#1D9E75;
-          display:inline-block;"></span>Dartboard Fletch
+          display:inline-block;"></span>Fletch
       </a>
       ${pages.map(p => `
         <a href="${p.href}" style="padding:0 14px;height:44px;display:inline-flex;
