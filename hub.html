@@ -4,24 +4,97 @@
 <meta charset="UTF-8">
 <meta name="robots" content="index, follow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fletch Intelligence Hub</title>
+<title>Fletch — Free BESS Market Intelligence</title>
+<meta name="description" content="Fletch turns raw EIA-860M filings into actionable battery storage market intelligence. Free interactive map, market sizing, sales pipeline, and insurance data for the US BESS market.">
+<meta property="og:title" content="Fletch — Free BESS Market Intelligence">
+<meta property="og:description" content="1,735 US battery storage sites on an interactive map. Filter by ISO, status, chemistry. Export to CSV. Free, no login required.">
+<meta property="og:url" content="https://raja-shipit.github.io/jupiterAI/">
+<meta property="og:type" content="website">
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f9f8f5; color: #1a1a1a; }
-.hero { padding: 48px 28px 32px; max-width: 860px; }
-.hero h1 { font-size: 26px; font-weight: 500; margin-bottom: 8px; }
-.hero p { font-size: 14px; color: #666; line-height: 1.6; max-width: 560px; }
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; padding: 0 28px 48px; max-width: 860px; }
-.card { background: #fff; border: 0.5px solid #e0dfd7; border-radius: 12px; padding: 22px 24px; text-decoration: none; color: inherit; display: block; transition: border-color 0.15s; }
-.card:hover { border-color: #aaa; }
-.card-icon { font-size: 22px; margin-bottom: 12px; }
-.card-title { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
-.card-desc { font-size: 12px; color: #888; line-height: 1.5; }
-.card-badge { display: inline-block; margin-top: 10px; font-size: 10px; padding: 2px 8px; border-radius: 20px; font-weight: 500; }
-.live { background: #e8f4e8; color: #1d6e3a; }
-.soon { background: #f4f3ef; color: #888; }
-.updated { font-size: 10px; color: #bbb; margin-top: 6px; }
+
+/* Hero */
+.hero {
+  padding: 56px 28px 40px;
+  max-width: 780px;
+  border-bottom: 0.5px solid #e0dfd7;
+  margin-bottom: 32px;
+}
+.hero-eyebrow {
+  font-size: 11px; font-weight: 500; letter-spacing: .08em;
+  text-transform: uppercase; color: #1D9E75; margin-bottom: 14px;
+}
+.hero h1 {
+  font-size: 32px; font-weight: 500; line-height: 1.2;
+  margin-bottom: 16px; color: #1a1a1a;
+}
+.hero h1 em { font-style: normal; color: #1D9E75; }
+.hero p {
+  font-size: 15px; color: #555; line-height: 1.7;
+  max-width: 600px; margin-bottom: 28px;
+}
+.hero-stats {
+  display: flex; gap: 32px; flex-wrap: wrap;
+}
+.stat-item { }
+.stat-value { font-size: 22px; font-weight: 500; color: #1a1a1a; }
+.stat-label { font-size: 11px; color: #999; margin-top: 2px; }
+
+/* Cards */
+.section-label {
+  font-size: 11px; font-weight: 500; color: #aaa;
+  text-transform: uppercase; letter-spacing: .06em;
+  padding: 0 28px; margin-bottom: 14px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 12px; padding: 0 28px 48px; max-width: 940px;
+}
+.card {
+  background: #fff; border: 0.5px solid #e0dfd7;
+  border-radius: 12px; padding: 22px 22px 18px;
+  text-decoration: none; color: inherit; display: block;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  position: relative;
+}
+.card:hover { border-color: #bbb; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+.card-icon { font-size: 20px; margin-bottom: 14px; }
+.card-title { font-size: 14px; font-weight: 500; margin-bottom: 5px; }
+.card-desc { font-size: 12px; color: #888; line-height: 1.55; }
+.card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 14px; }
+.card-badge { font-size: 10px; padding: 2px 8px; border-radius: 20px; font-weight: 500; }
+.live  { background: #e8f4e8; color: #1d6e3a; }
+.soon  { background: #f4f3ef; color: #888; }
+.card-stat { font-size: 11px; color: #bbb; }
+
+/* Who it's for */
+.audience {
+  padding: 0 28px 48px; max-width: 780px;
+}
+.audience h2 { font-size: 14px; font-weight: 500; color: #999; margin-bottom: 12px; text-transform: uppercase; letter-spacing: .05em; }
+.audience-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.audience-tag {
+  font-size: 12px; padding: 5px 12px; border-radius: 20px;
+  background: #fff; border: 0.5px solid #e0dfd7; color: #555;
+}
+
+/* Footer */
+.footer {
+  padding: 20px 28px 40px;
+  font-size: 11px; color: #bbb; border-top: 0.5px solid #e0dfd7;
+  max-width: 780px;
+}
+.footer a { color: #bbb; }
+
+@media(max-width:600px) {
+  .hero h1 { font-size: 24px; }
+  .hero-stats { gap: 20px; }
+  .grid { grid-template-columns: 1fr; }
+}
 </style>
+
 <!-- PostHog Analytics -->
 <script>
 !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+" (stub)"},o="init capture alias identify group unregister getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey identify setPersonProperties".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
@@ -36,45 +109,119 @@ posthog.init('phc_miUurZQsvLZKWAZ6PpC73exwMUWwj4yKik2upKyNiR68', {
 <body data-page="hub">
 <div id="topnav"></div>
 <script src="shared-nav.js?v=202608101151"></script>
+
+<!-- Hero -->
 <div class="hero">
-  <h1>Fletch Intelligence Hub</h1>
-  <p>Real-time BESS market intelligence. Data sourced from EIA Form 860/860M, updated monthly via eia_bess_monitor.py.</p>
+  <div class="hero-eyebrow">Free · No login · Updated monthly</div>
+  <h1>US battery storage intelligence,<br><em>without the spreadsheet.</em></h1>
+  <p>Public EIA data is rich — but turning raw 860M filings into something usable takes hours. Fletch does that work for you. Every month, automatically.</p>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-value" id="stat-sites">1,735</div>
+      <div class="stat-label">BESS sites tracked</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value" id="stat-mw">130,526 MW</div>
+      <div class="stat-label">Total capacity</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value">48</div>
+      <div class="stat-label">States covered</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-value" id="stat-updated">Monthly</div>
+      <div class="stat-label">Data refresh</div>
+    </div>
+  </div>
 </div>
+
+<!-- Cards -->
+<div class="section-label">What's inside</div>
 <div class="grid">
   <a class="card" href="map.html">
     <div class="card-icon">🗺️</div>
     <div class="card-title">BESS plant map</div>
-    <div class="card-desc">Interactive US map of all utility-scale battery storage sites. Filter by ISO, chemistry, status, and owner.</div>
-    <span class="card-badge live">Live</span>
-    <div class="updated">62 sites · 8,340 MW</div>
+    <div class="card-desc">Every utility-scale battery site in the US on an interactive map. Filter by ISO region, project status, chemistry (LFP, NMC, Flow), and capacity. Click any site to open in Google Maps. Export to CSV or JSON.</div>
+    <div class="card-footer">
+      <span class="card-badge live">Live</span>
+      <span class="card-stat">1,735 sites · 44 states</span>
+    </div>
   </a>
+
   <a class="card" href="market.html">
     <div class="card-icon">📈</div>
     <div class="card-title">Market sizing</div>
-    <div class="card-desc">TAM charts, cumulative capacity growth, top states, application mix, chemistry share, and install cost curve.</div>
-    <span class="card-badge live">Live</span>
-    <div class="updated">30+ GW installed · +89% YoY</div>
+    <div class="card-desc">TAM, cumulative capacity growth curves, top states by MW, chemistry share, application mix, and install cost trends. All derived from current EIA data, not analyst estimates.</div>
+    <div class="card-footer">
+      <span class="card-badge live">Live</span>
+      <span class="card-stat">45.6 GW operating</span>
+    </div>
   </a>
+
   <a class="card" href="pipeline.html">
     <div class="card-icon">📋</div>
     <div class="card-title">Sales pipeline</div>
-    <div class="card-desc">New BESS projects entering EIA-860M each month. Your automated outbound prospecting lead feed.</div>
-    <span class="card-badge live">Live</span>
-    <div class="updated">18 new leads · Apr 2026</div>
+    <div class="card-desc">New BESS projects entering EIA-860M each month — who's building, where, and how big. Built for equipment vendors, EPCs, and BD teams who want to get ahead of the project list.</div>
+    <div class="card-footer">
+      <span class="card-badge live">Live</span>
+      <span class="card-stat">476 in pipeline</span>
+    </div>
   </a>
+
   <a class="card" href="insurance.html">
     <div class="card-icon">🛡️</div>
-    <div class="card-title">Insurance brief</div>
-    <div class="card-desc">Retirement rates by ISO, failure type breakdown, premium trend, and revenue-at-risk. Actuary-ready data.</div>
-    <span class="card-badge live">Live</span>
-    <div class="updated">47 failure records · CAISO highest risk</div>
+    <div class="card-title">Insurance & risk</div>
+    <div class="card-desc">Capacity at risk by ISO, retirement rates, and revenue-at-risk estimates by region. Structured for underwriters and risk teams who need portfolio concentration data fast.</div>
+    <div class="card-footer">
+      <span class="card-badge live">Live</span>
+      <span class="card-stat">CAISO 35% concentration</span>
+    </div>
   </a>
-  <a class="card" href="#">
+
+  <a class="card" href="#" style="opacity:.6;pointer-events:none;">
     <div class="card-icon">🧠</div>
     <div class="card-title">ML failure labels</div>
-    <div class="card-desc">Retired and cancelled BESS assets from EIA-860 annual. Ground-truth data for Fletch predictive models.</div>
-    <span class="card-badge soon">Coming soon</span>
+    <div class="card-desc">Retired and cancelled assets from EIA-860 annual. Ground-truth dataset for predictive maintenance and failure analysis models.</div>
+    <div class="card-footer">
+      <span class="card-badge soon">Coming soon</span>
+    </div>
   </a>
 </div>
+
+<!-- Who it's for -->
+<div class="audience">
+  <h2>Built for</h2>
+  <div class="audience-list">
+    <span class="audience-tag">BESS developers</span>
+    <span class="audience-tag">Equipment vendors & EPCs</span>
+    <span class="audience-tag">Insurance underwriters</span>
+    <span class="audience-tag">Project finance teams</span>
+    <span class="audience-tag">BD & sales teams</span>
+    <span class="audience-tag">Energy analysts</span>
+    <span class="audience-tag">Startup founders</span>
+    <span class="audience-tag">Grid consultants</span>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  Data source: <a href="https://www.eia.gov/electricity/data/eia860m/" target="_blank">EIA Form 860M</a> · Updated monthly · Free to use · <a href="map.html">Open the map →</a>
+</div>
+
+<!-- Pull live stats from metadata.json -->
+<script>
+fetch('metadata.json?_=' + Date.now())
+  .then(r => r.json())
+  .then(m => {
+    if (m.site_count) document.getElementById('stat-sites').textContent = m.site_count.toLocaleString();
+    if (m.total_mw)   document.getElementById('stat-mw').textContent   = m.total_mw.toLocaleString() + ' MW';
+    if (m.last_updated_date) {
+      const d = new Date(m.last_updated_date);
+      document.getElementById('stat-updated').textContent =
+        d.toLocaleDateString('en-US', {month:'short', year:'numeric'});
+    }
+  }).catch(() => {});
+</script>
+
 </body>
 </html>
